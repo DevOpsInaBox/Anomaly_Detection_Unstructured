@@ -10,7 +10,7 @@ library(RMySQL)
 # This is the original sequence. Uncomment this if the newt dataset is not working
 #prosPath = system.file("extdata", "prostate.csv", package = "h2o")
 #prostate_df <- read.csv(prosPath)
-
+print("************************************This is my comment******************************************")
 print("************************************Importing prostate data part from MySQL DB******************************************")
 print("First few rows of data from the Database")
 con <- dbConnect(MySQL(),user='root',password='root',host='52.207.0.161',dbname='anomaly_db')
