@@ -42,6 +42,8 @@ head(pros_txt)
 prostate<-merge(prostate_data_db,pros_csv,by="ID",all = TRUE)
 prostate_df<-merge(prostate,pros_txt,by="ID",all = T)
 prostate_df<-prostate_df[c('ID','CAPSULE','AGE','RACE','DPROS','DCAPS','PSA','VOL','GLEASON')]
+print("###########Export the merge data to Jenkins##########")
+write.csv(prostate_df,"prostate_df.csv",row.names = F)
 
 print("**************************************First Few Rows of Prostate Cancer Data***********************************************")
 head(prostate_df)
