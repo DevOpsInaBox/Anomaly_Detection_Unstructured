@@ -72,7 +72,7 @@ validate_predictions <- predict(rf_model, newdata=validate_df[,feature_names], t
 auc_rf = roc(response=as.numeric(as.factor(validate_df[,outcome_name]))-1,
              predictor=validate_predictions[,2])
 print("****************************Receiver Operating Curve(ROC) is plotted with the model for checking Model Fit**************************")
-plot(auc_rf, print.thres = "best", main=paste('AUC:',round(auc_rf$auc[[1]],3)))
+plot(auc_rf, print.thres = "best", main=paste('Random Forest AUC:',round(auc_rf$auc[[1]],3)))
 abline(h=1,col='blue')
 abline(h=0,col='green')
 print(paste0("******************************Area Under Curve is found to be :",round(auc_rf$auc[[1]],3),"********************************"))
@@ -113,7 +113,7 @@ validate_predictions_known <- predict(rf_model, newdata=validate_df[,feature_nam
 auc_rf = roc(response=as.numeric(as.factor(validate_df[,outcome_name]))-1,
              predictor=validate_predictions_known[,2])
 print(paste0("******************ROC curve is plotted based on new predictions and AUC is found to be ",round(auc_rf$auc[[1]],3),"**********************"))
-plot(auc_rf, print.thres = "best", main=paste('AUC:',round(auc_rf$auc[[1]],3)))
+plot(auc_rf, print.thres = "best", main=paste('AUC curve after applying H2O:',round(auc_rf$auc[[1]],3)))
 abline(h=1,col='blue')
 abline(h=0,col='green')
 
@@ -140,6 +140,6 @@ valid_all <- (validate_predictions_known[,2] + validate_predictions_unknown[,2])
 auc_rf = roc(response=as.numeric(as.factor(validate_df[,outcome_name]))-1,
              predictor=valid_all)
 print(paste0("******************ROC curve is plotted using predictions from Boosting and AUC is found to be ",round(auc_rf$auc[[1]],3),"**********************"))
-plot(auc_rf, print.thres = "best", main=paste('AUC:',round(auc_rf$auc[[1]],3)))
+plot(auc_rf, print.thres = "best", main=paste('AUC after Bagging:',round(auc_rf$auc[[1]],3)))
 abline(h=1,col='blue')
 abline(h=0,col='green')
