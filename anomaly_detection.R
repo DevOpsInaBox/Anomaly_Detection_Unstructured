@@ -113,7 +113,7 @@ validate_predictions_known <- predict(rf_model, newdata=validate_df[,feature_nam
 auc_rf = roc(response=as.numeric(as.factor(validate_df[,outcome_name]))-1,
              predictor=validate_predictions_known[,2])
 print(paste0("******************ROC curve is plotted based on new predictions and AUC is found to be ",round(auc_rf$auc[[1]],3),"**********************"))
-plot(auc_rf, print.thres = "best", main=paste('AUC curve after applying H2O:',round(auc_rf$auc[[1]],3)))
+plot(auc_rf, print.thres = "best", main=paste('AUC below 0.1 error rate:',round(auc_rf$auc[[1]],3)))
 abline(h=1,col='blue')
 abline(h=0,col='green')
 
@@ -130,7 +130,7 @@ validate_predictions_unknown <- predict(rf_model, newdata=validate_df[,feature_n
 auc_rf = roc(response=as.numeric(as.factor(validate_df[,outcome_name]))-1,
              predictor=validate_predictions_unknown[,2])
 print(paste0("******************ROC curve is plotted based on new predictions and AUC is found to be ",round(auc_rf$auc[[1]],3),"**********************"))
-plot(auc_rf, print.thres = "best", main=paste('AUC:',round(auc_rf$auc[[1]],3)))
+plot(auc_rf, print.thres = "best", main=paste('AUC above 0.1 error rate:',round(auc_rf$auc[[1]],3)))
 abline(h=1,col='blue')
 abline(h=0,col='green')
 
